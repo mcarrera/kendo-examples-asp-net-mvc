@@ -8,15 +8,15 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
-
 namespace Kendo.Mvc.Grid.CRUD.Models
 {
     #region Contexts
@@ -82,6 +82,7 @@ namespace Kendo.Mvc.Grid.CRUD.Models
         private ObjectSet<Product> _Products;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -93,11 +94,11 @@ namespace Kendo.Mvc.Grid.CRUD.Models
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -126,7 +127,8 @@ namespace Kendo.Mvc.Grid.CRUD.Models
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -145,7 +147,7 @@ namespace Kendo.Mvc.Grid.CRUD.Models
                 {
                     OnProductIDChanging(value);
                     ReportPropertyChanging("ProductID");
-                    _ProductID = StructuralObject.SetValidValue(value);
+                    _ProductID = StructuralObject.SetValidValue(value, "ProductID");
                     ReportPropertyChanged("ProductID");
                     OnProductIDChanged();
                 }
@@ -170,7 +172,7 @@ namespace Kendo.Mvc.Grid.CRUD.Models
             {
                 OnProductNameChanging(value);
                 ReportPropertyChanging("ProductName");
-                _ProductName = StructuralObject.SetValidValue(value, false);
+                _ProductName = StructuralObject.SetValidValue(value, false, "ProductName");
                 ReportPropertyChanged("ProductName");
                 OnProductNameChanged();
             }
@@ -194,7 +196,7 @@ namespace Kendo.Mvc.Grid.CRUD.Models
             {
                 OnQuantityPerUnitChanging(value);
                 ReportPropertyChanging("QuantityPerUnit");
-                _QuantityPerUnit = StructuralObject.SetValidValue(value, true);
+                _QuantityPerUnit = StructuralObject.SetValidValue(value, true, "QuantityPerUnit");
                 ReportPropertyChanged("QuantityPerUnit");
                 OnQuantityPerUnitChanged();
             }
@@ -218,7 +220,7 @@ namespace Kendo.Mvc.Grid.CRUD.Models
             {
                 OnUnitPriceChanging(value);
                 ReportPropertyChanging("UnitPrice");
-                _UnitPrice = StructuralObject.SetValidValue(value);
+                _UnitPrice = StructuralObject.SetValidValue(value, "UnitPrice");
                 ReportPropertyChanged("UnitPrice");
                 OnUnitPriceChanged();
             }
@@ -242,7 +244,7 @@ namespace Kendo.Mvc.Grid.CRUD.Models
             {
                 OnUnitsInStockChanging(value);
                 ReportPropertyChanging("UnitsInStock");
-                _UnitsInStock = StructuralObject.SetValidValue(value);
+                _UnitsInStock = StructuralObject.SetValidValue(value, "UnitsInStock");
                 ReportPropertyChanged("UnitsInStock");
                 OnUnitsInStockChanged();
             }
@@ -266,7 +268,7 @@ namespace Kendo.Mvc.Grid.CRUD.Models
             {
                 OnUnitsOnOrderChanging(value);
                 ReportPropertyChanging("UnitsOnOrder");
-                _UnitsOnOrder = StructuralObject.SetValidValue(value);
+                _UnitsOnOrder = StructuralObject.SetValidValue(value, "UnitsOnOrder");
                 ReportPropertyChanged("UnitsOnOrder");
                 OnUnitsOnOrderChanged();
             }
@@ -290,7 +292,7 @@ namespace Kendo.Mvc.Grid.CRUD.Models
             {
                 OnReorderLevelChanging(value);
                 ReportPropertyChanging("ReorderLevel");
-                _ReorderLevel = StructuralObject.SetValidValue(value);
+                _ReorderLevel = StructuralObject.SetValidValue(value, "ReorderLevel");
                 ReportPropertyChanged("ReorderLevel");
                 OnReorderLevelChanged();
             }
@@ -314,7 +316,7 @@ namespace Kendo.Mvc.Grid.CRUD.Models
             {
                 OnDiscontinuedChanging(value);
                 ReportPropertyChanging("Discontinued");
-                _Discontinued = StructuralObject.SetValidValue(value);
+                _Discontinued = StructuralObject.SetValidValue(value, "Discontinued");
                 ReportPropertyChanged("Discontinued");
                 OnDiscontinuedChanged();
             }
@@ -324,9 +326,9 @@ namespace Kendo.Mvc.Grid.CRUD.Models
         partial void OnDiscontinuedChanged();
 
         #endregion
-    
+
     }
 
     #endregion
-    
+
 }
